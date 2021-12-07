@@ -5,6 +5,8 @@ import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-b
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PublicPageComponent } from './public-page/public-page.component';
+import { RestrictedPageComponent } from './restricted-page/restricted-page.component';
 
 
 export function MsalInstanceFactory(): IPublicClientApplication {
@@ -21,7 +23,9 @@ export function MsalInstanceFactory(): IPublicClientApplication {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PublicPageComponent,
+    RestrictedPageComponent
   ],
   imports: [
     BrowserModule,

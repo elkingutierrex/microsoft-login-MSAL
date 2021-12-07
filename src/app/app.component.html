@@ -1,5 +1,11 @@
 <table>
   <tr>
+    <td>
+      <a routerLink="public-page">[PUBLIC-PAGE]</a>
+    </td>
+    <td>
+      <a routerLink="restricted-page">[RESTRICTED-PAGE]</a>
+    </td>
     <button (click)="login()"  *ngIf="!isLoggedIn()"> SIGN IN</button>
     <button (click)="logout()" *ngIf="isLoggedIn()" > SIGN OUT</button>
   </tr>
