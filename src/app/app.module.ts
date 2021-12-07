@@ -1,8 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
+export function MsalInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication({
+    auth:{
+      clientId : 'a37db82c-e5c5-42ce-ab58-7b333367261a',
+      redirectUri: 'http://localhost:4200',
+      // tenantId
+
+    }
+
+  })
+}
 
 @NgModule({
   declarations: [
@@ -10,9 +25,16 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MsalModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MsalInstanceFactory
+    },
+    MsalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
